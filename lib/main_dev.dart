@@ -129,6 +129,8 @@ class _MyAppState extends State<MyApp> {
                             // Delay crash for 5 seconds
                             sleep(const Duration(seconds: 5));
 
+                            print('runZonedGuarded: Crash');
+
                             // Use FirebaseCrashlytics to throw an error. Use this for
                             // confirmation that errors are being correctly reported.
                             FirebaseCrashlytics.instance.crash();
@@ -141,7 +143,7 @@ class _MyAppState extends State<MyApp> {
                                   'Please crash and reopen to send data to Crashlytics'),
                               duration: Duration(seconds: 5),
                             ));
-
+                            print('runZonedGuarded: Throw Error');
                             // Example of thrown error, it will be caught and sent to
                             // Crashlytics.
                             throw StateError('Uncaught error thrown by app');
@@ -155,6 +157,8 @@ class _MyAppState extends State<MyApp> {
                                   'Please crash and reopen to send data to Crashlytics'),
                               duration: Duration(seconds: 5),
                             ));
+
+                            print('runZonedGuarded: Async out of bounds');
 
                             // Example of an exception that does not get caught
                             // by `FlutterError.onError` but is caught by
@@ -180,6 +184,9 @@ class _MyAppState extends State<MyApp> {
                             } catch (e, s) {
                               // "reason" will append the word "thrown" in the
                               // Crashlytics console.
+
+                              print('runZonedGuarded: Record Error $e  $s');
+
                               await FirebaseCrashlytics.instance
                                   .recordError(e, s, reason: 'as an example');
                             }
