@@ -1,4 +1,4 @@
-# firebase_demo
+# firebaseCrashlytics
 
 A new Flutter application.
 
